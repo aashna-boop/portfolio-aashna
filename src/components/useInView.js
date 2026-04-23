@@ -5,20 +5,21 @@ export default function useInView(options = {}) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      setInView(true);
-    }
-  }, options);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15, ...options }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  if (ref.current) {
-    observer.observe(ref.current);
-  }
-
-  return () => {
-    if (ref.current) {
-      observer.unobserve(ref.current);
-    }
-  };
-}, [options]); // ✅ add this
+  return [ref, visible];
 }

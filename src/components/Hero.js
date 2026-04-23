@@ -155,15 +155,6 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero__badge hero__badge--bottom">
-            <span className="hero__badge-emoji">🚀</span>
-            <div>
-              <strong>Google Campus Ambassador</strong>
-              <p>150+ students reached</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="hero__scroll-hint">
         <div className="hero__scroll-line" />

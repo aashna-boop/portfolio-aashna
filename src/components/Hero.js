@@ -9,7 +9,7 @@ const ROLES = [
 ];
 
 export default function Hero() {
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhoto] = useState('/profile.jpg');
   const [roleIdx, setRoleIdx] = useState(0);
   const [fade, setFade] = useState(true);
   const fileRef = useRef(null);

@@ -5,20 +5,20 @@ export default function useInView(options = {}) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15, ...options }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      setInView(true);
+    }
+  }, options);
 
-  return [ref, visible];
+  if (ref.current) {
+    observer.observe(ref.current);
+  }
+
+  return () => {
+    if (ref.current) {
+      observer.unobserve(ref.current);
+    }
+  };
+}, [options]); // ✅ add this
 }

@@ -1,0 +1,55 @@
+:root {
+  --cardinal: #8C1515;
+  --cardinal-dark: #6A0F0F;
+  --cardinal-light: #B83232;
+  --sand: #F4E9D9;
+  --warm-white: #FAF7F2;
+  --charcoal: #1A1A1A;
+  --mid-gray: #4A4A4A;
+  --light-gray: #D4CFC9;
+  --accent-gold: #C9A84C;
+  --accent-teal: #007C92;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--warm-white);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--cardinal);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--sand);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cardinal);
+  border-radius: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

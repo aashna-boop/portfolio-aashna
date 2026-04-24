@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Hero.css';
 
 const ROLES = [
@@ -9,10 +9,8 @@ const ROLES = [
 ];
 
 export default function Hero() {
-  const [photo, setPhoto] = useState('/profile.jpg');
   const [roleIdx, setRoleIdx] = useState(0);
   const [fade, setFade] = useState(true);
-  const fileRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,25 +22,6 @@ export default function Hero() {
     }, 2600);
     return () => clearInterval(interval);
   }, []);
-
-  const handlePhoto = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (ev) => setPhoto(ev.target.result);
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = (ev) => setPhoto(ev.target.result);
-      reader.readAsDataURL(file);
-    }
-  };
 
   return (
     <section className="hero" id="hero">
@@ -78,18 +57,10 @@ export default function Hero() {
           </p>
 
           <div className="hero__actions">
-            <a
-              href="mailto:aashnasuman19@gmail.com"
-              className="hero__btn hero__btn--primary"
-            >
+            <a href="mailto:aashnasuman19@gmail.com" className="hero__btn hero__btn--primary">
               Get in touch
             </a>
-            <a
-              href="https://www.linkedin.com/in/aashna-suman"
-              target="_blank"
-              rel="noreferrer"
-              className="hero__btn hero__btn--secondary"
-            >
+            <a href="https://www.linkedin.com/in/aashna-suman" target="_blank" rel="noreferrer" className="hero__btn hero__btn--secondary">
               LinkedIn ↗
             </a>
           </div>
@@ -106,46 +77,16 @@ export default function Hero() {
             </div>
             <div className="hero__stat-divider" />
             <div className="hero__stat">
-              <span className="hero__stat-num">500+</span>
-              <span className="hero__stat-label">Lives Impacted</span>
+              <span className="hero__stat-num">150+</span>
+              <span className="hero__stat-label">Students Reached</span>
             </div>
           </div>
         </div>
 
         <div className="hero__photo-col">
-          <div
-            className="hero__photo-frame"
-            onDrop={handleDrop}
-            onDragOver={(e) => e.preventDefault()}
-            onClick={() => fileRef.current.click()}
-          >
-            {photo ? (
-              <>
-                <img src={photo} alt="Aashna Suman" className="hero__photo-img" />
-                <div className="hero__photo-overlay">
-                  <span>Change Photo</span>
-                </div>
-              </>
-            ) : (
-              <div className="hero__photo-placeholder">
-                <div className="hero__photo-icon">
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="16" r="6" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M6 34c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <p className="hero__photo-text">Upload your photo</p>
-                <p className="hero__photo-sub">Click or drag & drop</p>
-              </div>
-            )}
+          <div className="hero__photo-frame">
+            <img src="/profile.jpg" alt="Aashna Suman" className="hero__photo-img" />
           </div>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            onChange={handlePhoto}
-            style={{ display: 'none' }}
-          />
 
           <div className="hero__badge hero__badge--top">
             <span className="hero__badge-emoji">🎓</span>
@@ -154,7 +95,8 @@ export default function Hero() {
               <p>Dual Degree Track</p>
             </div>
           </div>
-
+        </div>
+      </div>
 
       <div className="hero__scroll-hint">
         <div className="hero__scroll-line" />

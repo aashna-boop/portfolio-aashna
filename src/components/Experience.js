@@ -6,7 +6,7 @@ const experiences = [
   {
     org: 'Google',
     role: 'Campus Ambassador',
-    period: 'Sep 2025 – Present',
+    period: 'Sep 2025 – Dec 2025',
     logo: '🔵',
     color: '#4285F4',
     points: [

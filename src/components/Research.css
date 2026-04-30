@@ -1,4 +1,78 @@
-/* Upcoming Section */
+/* In Research.css — replace or add your card styles */
+
+.research__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.research__card {
+  background: var(--card-bg, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-left: 4px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+  cursor: default;
+}
+
+.research__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+  border-left-color: var(--card-accent, #8C1515);
+}
+
+.research__card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.research__tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.research__date {
+  font-size: 0.78rem;
+  color: var(--text-muted, #9ca3af);
+  font-weight: 500;
+}
+
+.research__card-title {
+  font-size: 0.975rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text, #111827);
+  margin: 0;
+}
+
+.research__venue {
+  font-size: 0.82rem;
+  color: var(--text-muted, #6b7280);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.research__authors {
+  font-size: 0.78rem;
+  color: var(--text-muted, #9ca3af);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Upcoming section */
 .upcoming__header {
   margin-top: 5rem;
 }
@@ -16,73 +90,51 @@
   white-space: nowrap;
 }
 
-.upcoming__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.upcoming__card {
-  background: var(--card-bg, #fff);
-  border: 1px solid var(--border, #e5e7eb);
-  border-radius: 14px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.5s ease;
+/* fade-in animation */
+.fade-in {
   opacity: 0;
   transform: translateY(16px);
-  position: relative;
-  overflow: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.upcoming__grid.visible .upcoming__card {
+.fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.upcoming__card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, currentColor, transparent);
-  opacity: 0.3;
+.research__card {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
 }
 
-.upcoming__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+.fade-in.visible .research__card {
+  opacity: 1;
+  transform: translateY(0);
 }
+{papers.map((p, i) => (
+  <div
+    key={i}
+    className="research__card"
+    style={{
+      transitionDelay: `${i * 0.1}s`,
+      '--card-accent': p.color,   // ← this makes each card's left border its own color
+    }}
+  >
+    ...
+  </div>
+))}
 
-.upcoming__card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.upcoming__badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  background: #f3f4f6;
-  color: #6b7280;
-  border: 1px dashed #d1d5db;
-  white-space: nowrap;
-}
-
-.upcoming__description {
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--text-muted, #6b7280);
-  margin: 0;
-}
+{/* same for upcoming */}
+{upcoming.map((u, i) => (
+  <div
+    key={i}
+    className="research__card"
+    style={{
+      transitionDelay: `${i * 0.1}s`,
+      '--card-accent': u.color,
+    }}
+  >
+    ...
+  </div>
+))}

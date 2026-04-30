@@ -50,14 +50,14 @@ const upcoming = [
     tag: 'NLP & Automation',
     color: '#007C92',
     description:
-      'A novel framework that reimagines how AGDI (Automated Graphical Design and Integration) systems are built — instead of manual configuration, engineers describe what they need in plain language, and the system interprets those instructions using NLP and ML to automatically handle drawing layout, scaling, and structural generation.',
+      'A novel framework that reimagines how AGDI systems are built — engineers describe what they need in plain language, and the system interprets those instructions using NLP and ML to automatically handle drawing layout, scaling, and structural generation.',
   },
   {
     title: 'Chaotic Graph Walk–Based Coverless Steganography Using Citation Networks',
     tag: 'Steganography',
     color: '#8C1515',
     description:
-      'Rather than embedding secrets inside a carrier file, this approach encodes information in the traversal path itself — using chaotic dynamical systems to generate deterministic yet highly unpredictable walks across citation graphs. The sequence of visited nodes carries the hidden message without any modification to the underlying graph, leaving no detectable trace.',
+      'Rather than embedding secrets inside a carrier file, this approach encodes information in the traversal path itself — using chaotic dynamical systems to generate deterministic yet unpredictable walks across citation graphs. The sequence of visited nodes carries the hidden message without any modification to the underlying graph.',
   },
   {
     title: 'COBRA-EV',
@@ -75,6 +75,8 @@ export default function Research() {
   return (
     <section className="research section" id="research" ref={ref}>
       <div className="container">
+
+        {/* Published */}
         <p className="section-label">Publications</p>
         <h2 className="section-title">Research & Publications</h2>
         <div className={`research__grid fade-in ${visible ? 'visible' : ''}`}>
@@ -100,21 +102,21 @@ export default function Research() {
           ))}
         </div>
 
-        {/* Upcoming Section */}
+        {/* Upcoming */}
         <div className="upcoming__header" ref={upcomingRef}>
           <p className="section-label">In Progress</p>
           <h2 className="section-title">Upcoming Research</h2>
         </div>
-        <div className={`upcoming__grid fade-in ${upcomingVisible ? 'visible' : ''}`}>
+        <div className={`research__grid fade-in ${upcomingVisible ? 'visible' : ''}`}>
           {upcoming.map((u, i) => (
             <div
               key={i}
-              className="upcoming__card"
+              className="research__card"
               style={{ transitionDelay: `${i * 0.1}s` }}
             >
-              <div className="upcoming__card-top">
+              <div className="research__card-top">
                 <span
-                  className="research__tag upcoming__tag"
+                  className="research__tag"
                   style={{ background: u.color + '18', color: u.color, borderColor: u.color + '30' }}
                 >
                   {u.tag}
@@ -122,10 +124,11 @@ export default function Research() {
                 <span className="upcoming__badge">Upcoming</span>
               </div>
               <h3 className="research__card-title">{u.title}</h3>
-              <p className="upcoming__description">{u.description}</p>
+              <p className="research__venue">{u.description}</p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

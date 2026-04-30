@@ -84,7 +84,10 @@ export default function Research() {
             <div
               key={i}
               className="research__card"
-              style={{ transitionDelay: `${i * 0.1}s` }}
+              style={{
+                transitionDelay: `${i * 0.1}s`,
+                '--card-accent': p.color,
+              }}
             >
               <div className="research__card-top">
                 <span
@@ -112,7 +115,10 @@ export default function Research() {
             <div
               key={i}
               className="research__card"
-              style={{ transitionDelay: `${i * 0.1}s` }}
+              style={{
+                transitionDelay: `${i * 0.1}s`,
+                '--card-accent': u.color,
+              }}
             >
               <div className="research__card-top">
                 <span

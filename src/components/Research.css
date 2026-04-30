@@ -3,6 +3,19 @@
   margin-top: 5rem;
 }
 
+.upcoming__badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px dashed #d1d5db;
+  white-space: nowrap;
+}
+
 .upcoming__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

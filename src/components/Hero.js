@@ -60,7 +60,7 @@ export default function Hero() {
             <a href="mailto:aashnasuman19@gmail.com" className="hero__btn hero__btn--primary">
               Get in touch
             </a>
-            <a href="www.linkedin.com/in/aashnasuman" target="_blank" rel="noreferrer" className="hero__btn hero__btn--secondary">
+            <a href="https://www.linkedin.com/in/aashnasuman/" target="_blank" rel="noreferrer" className="hero__btn hero__btn--secondary">
               LinkedIn ↗
             </a>
           </div>
